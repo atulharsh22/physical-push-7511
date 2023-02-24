@@ -7,8 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.exception.ComplaintException;
 import com.exception.EngineerException;
 import com.exception.HodException;
+import com.model.Complaint;
 import com.model.Engineer;
 import com.model.Hod;
 import com.utility.DBUtil;
@@ -72,7 +74,7 @@ public class HodDaoImpl implements HodDao{
 			
 		} catch (SQLException e) {
 			// TODO: handle exception
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new EngineerException(e.getMessage());
 			
 		}
@@ -142,6 +144,69 @@ public class HodDaoImpl implements HodDao{
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
+			throw new EngineerException(e.getMessage());
+		}
+		
+		return msg;
+	}
+	
+
+	@Override
+	public List<Complaint> getAllComplaints() throws ComplaintException {
+		// TODO Auto-generated method stub
+		List<Complaint> li = new ArrayList<>();
+		try (Connection conn = DBUtil.provideConnection()){
+			
+			PreparedStatement ps = conn.prepareStatement("Select * from Complaints");
+			ResultSet rs=ps.executeQuery();
+			
+			while(rs.next())
+			{
+				int cid=rs.getInt("cid");
+				String status = rs.getString("status");
+				int empid = rs.getInt("empid");
+				int engid = rs.getInt("engid");
+				String type = rs.getString("type");
+				
+				Complaint comp=new Complaint(cid,status,empid,engid,type);
+				
+				li.add(comp);
+			}
+			
+			if(li.isEmpty())
+			{
+				throw new ComplaintException("No complaint found");
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new ComplaintException(e.getMessage());
+		}
+		
+		return li;
+	}
+
+	@Override
+	public String assignComplaintToEngineer(int cid, int engid) throws EngineerException {
+		// TODO Auto-generated method stub
+		String msg="Enter valid complaint id";
+		
+		try (Connection conn=DBUtil.provideConnection()) {
+			
+			PreparedStatement ps =conn.prepareStatement("update Complaints set engid=? ,status='assigned' where cid=?");
+			int x = ps.executeUpdate();
+			
+			if(x>0)
+			{
+				msg="Complaint assigned to engineer"+engid;
+			}
+			else
+			{
+				throw new EngineerException("Engineer not found");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
 			throw new EngineerException(e.getMessage());
 		}
 		
