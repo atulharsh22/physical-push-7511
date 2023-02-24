@@ -28,12 +28,13 @@ public class HodRegisterEngineer {
 		eng.setCategory(category);
 		
 		HodDao dao=new HodDaoImpl();
-		String result="";
+		String result="Enter correct details";
 		try {
 			result = dao.registerEngineer(eng);
 		} catch (EngineerException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			//e.getMessage();
 		}
 		System.out.println(result);
 	}
