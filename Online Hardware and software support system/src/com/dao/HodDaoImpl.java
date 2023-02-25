@@ -195,6 +195,9 @@ public class HodDaoImpl implements HodDao{
 		try (Connection conn=DBUtil.provideConnection()) {
 			
 			PreparedStatement ps =conn.prepareStatement("update Complaints set engid=? ,status='assigned' where cid=?");
+			
+			ps.setInt(1, engid);
+			ps.setInt(2, cid);
 			int x = ps.executeUpdate();
 			
 			if(x>0)

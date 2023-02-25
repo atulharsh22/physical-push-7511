@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.exception.ComplaintException;
 import com.exception.EmployeeException;
 import com.model.Complaint;
 import com.model.Employee;
+import com.model.EngineerComplaintDTO;
 import com.utility.DBUtil;
 
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -113,6 +116,113 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		
 		return comp;
 	}
+	
 
+
+	@Override
+	public EngineerComplaintDTO checkComplaintStatus(int cId) throws ComplaintException {
+		// TODO Auto-generated method stub
+		EngineerComplaintDTO dto =null;
+		
+		try (Connection conn = DBUtil.provideConnection()){
+			
+			PreparedStatement ps = conn.prepareStatement("select e.engid,e.name,c.cid,c.status,c.empid,c.type from Engineer e INNER JOIN Complaints c ON e.engID = c.engID where cid=? ");
+			
+			ps.setInt(1,cId);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next())
+			{
+				dto = new EngineerComplaintDTO();
+				dto.setEngId(rs.getInt("engId"));
+				dto.setEngName(rs.getString("name"));
+				dto.setcId(rs.getInt("cid"));
+				dto.setStatus(rs.getString("status"));
+				dto.setEmpId(rs.getInt("empid"));
+				dto.setType(rs.getString("type"));
+				
+			}
+			else
+			{
+				throw new ComplaintException("Complaint not assigned");
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new ComplaintException(e.getMessage());
+		}
+		
+		
+		return dto;
+	}
+
+
+
+	@Override
+	public List<Complaint> checkComplainHistory(int empID) throws ComplaintException {
+		// TODO Auto-generated method stub
+		List<Complaint> li = new ArrayList<>();
+		try (Connection conn = DBUtil.provideConnection()){
+			
+			PreparedStatement ps = conn.prepareStatement("Select * from Complaints where empId=?");
+			ps.setInt(1, empID);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next())
+			{
+				Complaint comp = new Complaint();
+				comp.setcId(rs.getInt("cid"));
+				comp.setEmpId(rs.getInt("empId"));
+				comp.setEngId(rs.getInt("engId"));
+				comp.setStatus(rs.getString("status"));
+				comp.setType(rs.getString("type"));
+				
+				li.add(comp);
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		
+		return li;
+	}
+
+
+	@Override
+	public String changePassword(int empId, String username, String password, String newPassword)
+			throws EmployeeException {
+		// TODO Auto-generated method stub
+		String msg = "Password not updated";
+		try (Connection conn = DBUtil.provideConnection()){
+			PreparedStatement ps = conn.prepareStatement("Update Employee set password = ? where empId=? AND username=? And password=?");
+			ps.setString(1, newPassword);
+			ps.setInt(2, empId);
+			ps.setString(3, username);
+			ps.setString(4, password);
+			
+			int x = ps.executeUpdate();
+			
+			if(x>0)
+			{
+				msg="Password updated successfully";
+			}
+			else
+			{
+				throw new EmployeeException("Invalid credentials ");
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			throw new EmployeeException(e.getMessage());
+		}
+		return msg;
+	}
+	
+	
+	
 }
 
