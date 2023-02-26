@@ -9,8 +9,10 @@ import com.model.Hod;
 
 public class HodLogin {
 
-	public static void main(String[] args) {
+	public void hodLogin() {
 		// TODO Auto-generated method stub
+		System.out.println("HOD Login ...");
+		System.out.println("==================");
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter username");
 		String username=sc.nextLine();

@@ -104,6 +104,22 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				comp.setStatus("raised");
 				comp.setEmpId(empId);
 				comp.setType(type);
+				
+				
+				PreparedStatement ps2 = conn.prepareStatement("select cid from Complaints where empid=? AND type=? ");
+				ps2.setInt(1, empId);
+				ps2.setString(2, type);
+				
+				ResultSet rs = ps2.executeQuery();
+				
+				while(rs.next())
+				{
+					int cid = rs.getInt("cid");
+					
+					comp.setcId(cid);
+				}
+				
+				
 			}
 			else
 			{

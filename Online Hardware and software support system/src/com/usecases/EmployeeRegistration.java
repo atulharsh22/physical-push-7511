@@ -8,7 +8,7 @@ import com.exception.EmployeeException;
 
 public class EmployeeRegistration {
 
-	public static void main(String[] args) {
+	public void employeeRegistration() {
 		// TODO Auto-generated method stub
 		System.out.println("Employee Registration");
 		Scanner sc=new Scanner(System.in);

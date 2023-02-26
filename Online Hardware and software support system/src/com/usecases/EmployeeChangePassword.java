@@ -8,7 +8,7 @@ import com.exception.EmployeeException;
 
 public class EmployeeChangePassword {
 
-	public static void main(String[] args) {
+	public void employeeChangePassword() {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Employee id : ");

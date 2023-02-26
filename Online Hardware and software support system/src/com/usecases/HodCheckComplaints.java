@@ -10,7 +10,7 @@ import com.model.Complaint;
 
 public class HodCheckComplaints {
 
-	public static void main(String[] args) {
+	public void hodCheckComplaints() {
 		// TODO Auto-generated method stub
 		HodDao dao = new HodDaoImpl();
 		
@@ -21,7 +21,14 @@ public class HodCheckComplaints {
 				System.out.println("Complaint Id is : "+c.getcId());
 				System.out.println("Complaint status : "+c.getStatus());
 				System.out.println("Complaint registered by Employee with Employee id : "+c.getEmpId());
-				System.out.println("Complaint assigned to enginner with Engineer id : "+c.getEngId());
+				if(c.getEngId()==0)
+				{
+					System.out.println("Complaint has not been assigned to any engineer");
+				}
+				else
+				{
+					System.out.println("Complaint assigned to enginner with Engineer id : "+c.getEngId());
+				}
 				System.out.println("Complaint type : "+c.getType());
 				
 				System.out.println("--------------------------------");

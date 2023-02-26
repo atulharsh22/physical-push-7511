@@ -8,7 +8,7 @@ import com.exception.ComplaintException;
 
 public class EngineerUpdateComplaintStatus {
 
-	public static void main(String[] args) {
+	public void engineerUpdateComplaintStatus() {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter complaint id to be updated");

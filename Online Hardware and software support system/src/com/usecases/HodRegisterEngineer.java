@@ -9,7 +9,7 @@ import com.model.Engineer;
 
 public class HodRegisterEngineer {
 
-	public static void main(String[] args) {
+	public void hodRegisterEngineer() {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter Engineer name");

@@ -9,7 +9,7 @@ import com.model.Employee;
 
 public class EmployeeLogin {
 
-	public static void main(String[] args) {
+	public void employeeLogin() {
 		// TODO Auto-generated method stub
 		System.out.println("Employee login");
 		Scanner sc=new Scanner(System.in);

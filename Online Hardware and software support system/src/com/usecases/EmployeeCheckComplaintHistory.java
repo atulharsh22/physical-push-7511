@@ -10,7 +10,7 @@ import com.model.Complaint;
 
 public class EmployeeCheckComplaintHistory {
 
-	public static void main(String[] args) {
+	public void employeeCheckComplaintHistory() {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the employee id : ");

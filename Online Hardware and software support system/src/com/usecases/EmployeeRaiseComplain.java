@@ -9,7 +9,7 @@ import com.model.Complaint;
 
 public class EmployeeRaiseComplain {
 
-	public static void main(String[] args) {
+	public void employeeRaiseComplain() {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Employee id : ");
@@ -22,6 +22,8 @@ public class EmployeeRaiseComplain {
 		try {
 			Complaint comp = dao.registerComplain(empid, type);
 
+			System.out.println("Complaint registered with Complaint id : "+comp.getcId());
+			
 			System.out.println("Complain registered with status as : "+comp.getStatus());
 			System.out.println("Complain registered by employee with Employee id : "+comp.getEmpId());
 			System.out.println("Complain type : "+comp.getType());

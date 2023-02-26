@@ -10,7 +10,7 @@ import com.model.Engineer;
 
 public class EngineerLogin {
 
-	public static void main(String[] args) {
+	public void engineerLogin() {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter username");

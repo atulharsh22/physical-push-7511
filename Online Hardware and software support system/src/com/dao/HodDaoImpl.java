@@ -202,7 +202,7 @@ public class HodDaoImpl implements HodDao{
 			
 			if(x>0)
 			{
-				msg="Complaint assigned to engineer"+engid;
+				msg="Complaint assigned to engineer with engineer id : "+engid;
 			}
 			else
 			{

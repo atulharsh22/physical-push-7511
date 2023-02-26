@@ -9,7 +9,7 @@ import com.model.EngineerComplaintDTO;
 
 public class EmployeeCheckComplaintStatus {
 
-	public static void main(String[] args) {
+	public void employeeCheckComplaintStatus() {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Complaint id : ");
@@ -27,7 +27,7 @@ public class EmployeeCheckComplaintStatus {
 			
 		} catch (ComplaintException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
 	}

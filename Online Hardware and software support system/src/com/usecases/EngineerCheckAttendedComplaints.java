@@ -10,7 +10,7 @@ import com.model.Complaint;
 
 public class EngineerCheckAttendedComplaints {
 
-	public static void main(String[] args) {
+	public void engineerCheckAttendedComplaints() {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Engineer id of engineer :");

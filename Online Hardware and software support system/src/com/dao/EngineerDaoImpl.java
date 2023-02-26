@@ -91,8 +91,8 @@ public class EngineerDaoImpl implements EngineerDao{
 		String msg = "Complaint not updated, check your complaint id";
 		try (Connection conn=DBUtil.provideConnection()){
 			PreparedStatement ps = conn.prepareStatement("update complaints set status=? where cid=?");
-			ps.setInt(1,cid);
-			ps.setString(2,status);
+			ps.setString(1,status);
+			ps.setInt(2,cid);
 			int x = ps.executeUpdate();
 			
 			if(x>0)
