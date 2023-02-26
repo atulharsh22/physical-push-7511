@@ -26,7 +26,7 @@ This is a console based java project used by HOD, Employees and Engineers to wor
 #### Engineer -
 -- Login  <br>
 -- can view problems assigned to him by the HOD <br>
--- can update the status of the problem assigned by him <br>
+-- can update the status of the problem assigned to him <br>
 -- can see list of all the problems attended by him <br>
 -- can change his password <br>
 
