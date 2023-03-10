@@ -1,4 +1,6 @@
 # Online Hardware and software support system
+![Hardware and software support](https://user-images.githubusercontent.com/107464833/224231128-74558c02-3d88-457c-b6e5-a02945489dcc.png)
+
 This is a console based java project used by HOD, Employees and Engineers to work together. In case any problem arises in the system complaint is registered using this system by employee. This complaint is assigned to engineer by the HOD and engineer works on the problem and update the status of the problem.
 
 ### Users of the application - <br>
