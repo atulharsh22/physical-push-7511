@@ -26,6 +26,7 @@ public class HodLogin {
 		} catch (HodException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
+			hodLogin();
 		}
 	}
 
